@@ -79,8 +79,10 @@ Add this code to your consul client configuration file:
     tokens = {
         default = "[your_token]"
     }
-    
-    copy provision/consul/config/service-1.json (outside vagrant) to /var/config/consul/service-1.json (inside vagrant)
+
+And copy
+        
+    provision/consul/config/service-1.json (outside vagrant) to /var/config/consul/service-1.json (inside vagrant)
 
 Change in /var/config/consul/service-1.json your port, address, http, name, header and body. Save it and run
     
