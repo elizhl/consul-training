@@ -18,4 +18,4 @@ acl = {
   down_policy = "extend-cache"
 }
 
-start_joint = ["172.20.20.11"]
+retry_join = ["172.20.20.11"]
