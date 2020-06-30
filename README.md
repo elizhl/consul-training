@@ -1,6 +1,6 @@
 # consul-training
 
-## Consul cluster
+### Consul cluster
 You need: Vagrant and VirtualBox
 
 Clone the project then run:
@@ -56,7 +56,7 @@ Then in a browser go to https://172.20.20.11:8500
 
 Paste your Secret ID and you will see all the consul ui options
 
-## Terraform Provider
+### Terraform Provider
 
 On main.tf you can add the set of values you need to save un the Key/Value store. Create an enviroment variable for the token and change the values of address, data center and path.
 
@@ -68,7 +68,7 @@ Run
 
 You can check the created values in the Consul UI
 
-## Service configuration and Health Checking
+### Service configuration and Health Checking
 
     vagrant ssh consul-client-2
 
