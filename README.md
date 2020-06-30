@@ -74,7 +74,8 @@ You can check the created values in the Consul UI
 
 You need to run an aplication inside one of your consul clients. Can be whatever you want at any port
 
-Add this code to your consul client configuration file
+Add this code to your consul client configuration file: 
+    
     tokens = {
         default = "[your_token]"
     }
