@@ -22,7 +22,7 @@ ports {
 advertise_addr     = "{{ env "HOST_IP" }}"
 advertise_addr_wan = "{{ env "HOST_IP" }}"
 
-{{ if eq (env "DATACENTER") (env "PRIMARY_DATACENTER") }}{{else}}
+{{ if eq (env "DATACENTER") "sfo" }}{{else}}
 retry_join_wan = {{ env "HOST_LIST" }}
 {{end}}
 
