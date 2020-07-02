@@ -1,4 +1,5 @@
 .vagrant/
+provision/certs/
 *.tfstate
 provision/terraform/.terraform/
 provision/terraform/terraform.tfstate.backup

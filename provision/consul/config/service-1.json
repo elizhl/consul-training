@@ -6,7 +6,7 @@
     "port": 5000,
 
     "check": {
-	    "id": "api",
+	    "id": "tickets_health_check",
 	    "name": "HTTP API on port 5000",
 	    "http": "https://localhost:5000/health",
 	    "tls_skip_verify": false,
