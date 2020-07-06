@@ -31,6 +31,23 @@ sudo sed -i "s/@server/$3/g" /etc/environment
 sudo cat /etc/environment
 source /etc/environment
 
-echo "Restarting Consul"
-sudo service consul restart
-sudo service consul status
+if [ "$1" == "sfo" ]; then 
+  echo "Restarting Consul"
+  sudo service consul restart
+  sudo service consul status
+  
+  echo "Waiting for Consul leader to bootstrap ACL System"
+  sudo bash /vagrant/provision/consul/system/wait_consul_leader.sh
+
+  echo "Bootstraping ACL System"
+  sudo bash /vagrant/provision/consul/system/bootstrap.sh
+
+fi
+
+if [ "$1" != "sfo" ]; then
+  sudo bash /vagrant/provision/scripts/init.secondaries.sh
+fi
+
+echo "SERVERS: =>"
+ip_addresses=`echo $3 | sed "s/,/\",\"/g"`
+echo "\"$ip_addresses\""

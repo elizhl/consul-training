@@ -90,8 +90,39 @@ Change in /var/config/consul/service-1.json your port, address, http, name, head
 
 You are going to see requests to your app every 10 seconds or the interval you choose and in the Consul UI on services tab you can see your app running and if the health checking succed or failed
 
+### Consul template
+
+We change install.sh, init.hashi.sh and we added a new file to replace all consul.hcl files. This file has the .tmpl extension that means is our file with variables. Those variables need to be populated so we need a new other fiile called env.sh that has all the values for the variables. 
+Now that we have all the new files and configurations we need to run our machines so we can see the tmpl populated.
+
+When everything is running you should see as members your consul client and consul server
+
 ### Multiple datacenter
 
+In the vagrant file we already have the code to generate 2 clients and 2 servers. You just need to run
+    
+    vagrant up
+
+### SSL
+
+You need to add the ssl params in you hcl config file then create the certs and the variables and reload you consul configuration
+
+If we run this with the template we are going to see as consul members a server and a client on each server now we want our datacenters to comunicate so we need consul federation
+
+### Consul Federation
+For this we need to add a line int he config hcl 
+    
+    retry_join_wan = [hosts_list]
+
+then in your primary datacenter run 
+
+    consul acl bootstrap
+
+then in both servers run 
+    
+    consul acl set-agent-token default <token>
+
+Now you need to configure the replication token. Visit https://learn.hashicorp.com/consul/day-2-agent-authentication/acl-replication to do this. 
 
 
 Done!
