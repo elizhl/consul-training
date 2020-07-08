@@ -62,3 +62,40 @@ curl -sL https://releases.hashicorp.com/consul-template/${CONSUL_TEMPLATE_VERSIO
 sudo unzip consul-template.zip
 sudo chmod +x consul-template
 sudo mv consul-template /usr/bin/consul-template
+
+export CONSUL_REPLICATE_VERSION=0.4.0
+curl -sL https://releases.hashicorp.com/consul-replicate/${CONSUL_REPLICATE_VERSION}/consul-replicate_${CONSUL_REPLICATE_VERSION}_linux_amd64.zip -o consul-replicate.zip
+sudo unzip consul-replicate.zip
+sudo chmod +x consul-replicate
+sudo mv consul-replicate /usr/bin/consul-replicate
+
+export NOMAD_VERSION=0.11.2
+curl -sL https://releases.hashicorp.com/nomad/${NOMAD_VERSION}/nomad_${NOMAD_VERSION}_linux_amd64.zip -o nomad.zip
+
+# Install nomad
+sudo unzip nomad.zip
+sudo chmod +x nomad
+sudo mv nomad /usr/bin/nomad
+
+curl -sL -L -o cni-plugins.tgz https://github.com/containernetworking/plugins/releases/download/v0.8.1/cni-plugins-linux-amd64-v0.8.1.tgz
+
+# Install CNI Plugin
+sudo mkdir -p /opt/cni/bin
+sudo tar -C /opt/cni/bin -xzf cni-plugins.tgz
+
+export VAULT_VERSION=1.2.3
+curl -sL https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT_VERSION}_linux_amd64.zip -o vault.zip
+
+# Install vault
+sudo unzip vault.zip
+sudo chmod +x vault
+sudo mv vault /usr/bin/vault
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,31 @@
+# General Settings 
+cluster_name = "{{ env "DATACENTER" }}"
+ui = true
+
+# Advertise the non-loopback interface
+api_addr     = "https://{{ env "HOST_IP" }}:8200"
+cluster_addr = "https://{{ env "HOST_IP" }}:8201"
+
+# Storage config
+storage "consul" {
+  address = "{{ env "HOST_IP" }}:{{ env "CONSUL_PORT" }}"
+  path    = "vault/"
+  service = "vault"
+  scheme  = "{{ env "CONSUL_SCHEME" }}"
+  tls_ca_file  = "{{ env "CONSUL_CACERT" }}"
+
+  token   = "{{ env "CONSUL_HTTP_TOKEN" }}"
+}
+
+# Listeners config
+listener "tcp" {
+    address       = "{{ env "HOST_IP" }}:8200"
+    tls_cert_file = "{{ env "VAULT_CLIENT_CERT" }}"
+    tls_key_file  = "{{ env "VAULT_CLIENT_KEY" }}"
+}
+
+# Telemetry
+telemetry = {
+  dogstatsd_addr   = "10.0.2.15:8125"
+  disable_hostname = true
+}

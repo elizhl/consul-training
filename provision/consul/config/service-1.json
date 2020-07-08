@@ -1,20 +1,41 @@
 {
-  "service": {
-  	"name": "basic-backend-app",
-    "tags": ["primary"],
-    "address": "172.20.20.12",
-    "port": 5000,
-
-    "check": {
-	    "id": "tickets_health_check",
-	    "name": "HTTP API on port 5000",
-	    "http": "https://localhost:5000/health",
-	    "tls_skip_verify": false,
-	    "method": "POST",
-	    "header": {"Content-Type": ["application/json"]},
-	    "body": "{\"method\":\"health\"}",
-	    "interval": "10s",
-	    "timeout": "1s"
-	  }
-  }
+    "services": [{
+        "name": "basic-backend-app",
+        "tags": ["primary"],
+        "address": "172.20.20.12",
+        "port": 5000,
+        "token": "fe1fcdd5-0daf-bcfc-6f55-a8b5c08abd20",
+        "check": {
+            "id": "tickets_health_check",
+            "name": "HTTP API on port 5000",
+            "http": "http://172.20.20.12:5000/health",
+            "tls_skip_verify": false,
+            "method": "POST",
+            "header": {
+                "Content-Type": ["application/json"]
+            },
+            "body": "{\"method\":\"health\"}",
+            "interval": "10s",
+            "timeout": "1s"
+        }
+    }, {
+        "name": "notifications-app",
+        "tags": ["primary"],
+        "address": "172.20.20.12",
+        "port": 8000,
+        "token": "fe1fcdd5-0daf-bcfc-6f55-a8b5c08abd20",
+        "check": {
+            "id": "notifications_health_check",
+            "name": "HTTP API on port 5000",
+            "http": "http://172.20.20.12:8000/health",
+            "tls_skip_verify": false,
+            "method": "POST",
+            "header": {
+                "Content-Type": ["application/json"]
+            },
+            "body": "{\"method\":\"health\"}",
+            "interval": "10s",
+            "timeout": "1s"
+        }
+    }]
 }

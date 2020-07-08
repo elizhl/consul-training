@@ -2,7 +2,7 @@
 
 . /etc/environment
 
-consul-template -template "/vagrant/provision/consul/config/consul.hcl.tmpl:/var/consul/config/consul.hcl" -once
+consul-template -template "/var/consul/config/consul.hcl.tmpl:/var/consul/config/consul.hcl" -once
 
 sudo chmod -R +x "/var/consul/config"
 sudo chmod -R +x "/vagrant/provision/consul/system"

@@ -124,5 +124,40 @@ then in both servers run
 
 Now you need to configure the replication token. Visit https://learn.hashicorp.com/consul/day-2-agent-authentication/acl-replication to do this. 
 
+### Consul replication
+
+We added 2 files in consul/system crreplicate.service and consul-replicate.sh
+
+Then in install.sh we added the download and unzip for consul replicate
+
+When you run vagrant up this service should start and all the key/values from sfo should be in nyc (Only for the paths you already specify in the flag -prefix of the command)
+
+### Consul template/Feature toggles
+In our applications we neeed to change our feature toggle variable to read a json file in our client machine
+Then we change the Dockerfile to add a pre-start script.
+
+Visit https://github.com/elizhl/basic-backend-app to see the changes and config to read the variables from consul.
+
+### Nomad and Vault
+
+We need to add the 2 files for the service nomad/vault.service nomad/vault-service.sh then we added the folders for nomad and vault and their config files as templates. Modify your install.sh and install.hashi.sh to add the necesary download and copy actions
+
+When the machines are running you can run in your sfo server 
+
+    nomad server members
+    nomad node status
+
+and you will see your nomad clients and servers
+
+### Nomad deployment
+
+Add a folder called deployment then create a file with a job inside of the job you can create a group per service change the config varibales and then run
+
+
+    nomad plan /<path>/
+    nomad run <*>
+
+Now you will see in consul UI your services but deployed with nomad.
+
 
 Done!
