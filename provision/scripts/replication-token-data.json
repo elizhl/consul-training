@@ -1,0 +1,9 @@
+{
+  "Description": "replication token",
+  "Policies": [
+    {
+      "Name": "replication"
+    }
+  ],
+  "Local": false
+} 

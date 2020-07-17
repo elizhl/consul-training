@@ -11,6 +11,7 @@ Vagrant.configure("2") do |config|
     #ip_addresses = "172.20.20.11,172.20.20.21"
     ip_prefix = dc == 'sfo' ? '172.20.20.11' : dc == 'nyc' ? '172.20.20.21' : '172.20.20.31'
     ip_prefix_client = dc == 'sfo' ? '172.20.20.12' : dc == 'nyc' ? '172.20.20.22' : '172.20.20.31'
+    port_grafana = dc == 'sfo' ? 3998 : 3999
 
     config.vm.define "#{dc}-consul-server" do |cs|
       cs.vm.hostname = "#{dc}-consul-server"
@@ -26,6 +27,7 @@ Vagrant.configure("2") do |config|
     config.vm.define "#{dc}-consul-client" do |cs|
       cs.vm.hostname = "#{dc}-consul-client"
       cs.vm.network "private_network", ip: "#{ip_prefix_client}"
+      cs.vm.network :forwarded_port, guest: 3999, guest_ip: "10.0.2.15", host: "#{port_grafana}",  host_ip: "0.0.0.0"
       cs.vm.provision "shell", path: "provision/scripts/init.hashi.sh", args: "#{dc} #{ip_prefix_client} false", privileged: false
       cs.vm.provision "shell", path: "provision/scripts/install.dnsmasq.sh", privileged: false
 

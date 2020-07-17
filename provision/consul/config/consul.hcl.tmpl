@@ -60,3 +60,8 @@ key_file   = "{{ env "CONSUL_CLIENT_KEY" }}"
 encrypt = "{{ env "CONSUL_ENCRYPT_KEY" }}"
 encrypt_verify_incoming = true
 encrypt_verify_outgoing = true
+
+telemetry = {
+  dogstatsd_addr   = "localhost:8125"
+  disable_hostname = true
+}

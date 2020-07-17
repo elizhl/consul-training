@@ -35,6 +35,7 @@ job "tickets" {
       check {
         type     = "http"
         port     = "http"
+        method   = "POST"
         path     = "/health"
         interval = "5s"
         timeout  = "2s"
@@ -73,6 +74,7 @@ job "tickets" {
       check {
         type     = "http"
         port     = "http"
+        method   = "POST"
         path     = "/health"
         interval = "5s"
         timeout  = "2s"

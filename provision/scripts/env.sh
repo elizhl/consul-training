@@ -18,6 +18,7 @@ export CONSUL_CLIENT_KEY=/var/certs/@dc-server-consul-0-key.pem
 export CONSUL_HTTP_SSL=true
 export CONSUL_ENCRYPT_KEY="apEfb4TxRk3zGtrxxAjIkwUOgnVkaD88uFyMGHqKjIw="
 export CONSUL_SSL=true
+export CONSUL_HTTP_TOKEN=""
 
 # Nomad env vars
 export NOMAD_CACERT=/var/certs/consul-agent-ca.pem
@@ -30,3 +31,4 @@ export NOMAD_ADDR=https://${HOST_IP}:4646
 export VAULT_CACERT=/var/certs/consul-agent-ca.pem
 export VAULT_CLIENT_CERT=/var/certs/@dc-server-consul-0.pem
 export VAULT_CLIENT_KEY=/var/certs/@dc-server-consul-0-key.pem
+export VAULT_ADDR=https://${HOST_IP}:8200

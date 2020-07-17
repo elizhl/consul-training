@@ -91,6 +91,14 @@ sudo unzip vault.zip
 sudo chmod +x vault
 sudo mv vault /usr/bin/vault
 
+export ENVCONSUL_VERSION=0.9.0
+curl -sL https://releases.hashicorp.com/envconsul/${ENVCONSUL_VERSION}/envconsul_${ENVCONSUL_VERSION}_linux_amd64.zip -o envconsul.zip
+
+# Instal envconsul
+sudo unzip envconsul.zip
+sudo chmod +x envconsul
+sudo mv envconsul /usr/bin/envconsul
+
 
 
 
